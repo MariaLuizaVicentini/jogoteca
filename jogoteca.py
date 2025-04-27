@@ -1,9 +1,11 @@
-# importar a classe Flask da framework flask
-from flask import Flask
+# Importa as classes Flask e render_template do módulo flask.
+# Flask é a classe principal para criar a aplicação web.
+# render_template é uma função para renderizar arquivos HTML.
+from flask import Flask, render_template
 
-# Criando um objeto da classe Flask.
+# Cria uma instância da classe Flask.
 # __name__ é uma variável especial do Python que representa o nome do módulo atual.
-# Ao passar __name__, o Flask sabe onde procurar por arquivos estáticos e templates.
+# Isso é importante para o Flask encontrar arquivos estáticos e templates na pasta correta.
 app = Flask(__name__)
 
 # @app.route('/inicio') é um decorador do Flask.
@@ -12,10 +14,10 @@ app = Flask(__name__)
 @app.route('/inicio')
 def ola():
     # Esta função 'ola()' é chamada quando a rota '/inicio' é acessada.
-    # 'return '<h1>Olá Flask!</h1>'' faz com que o servidor Flask envie uma resposta HTTP
-    # com o conteúdo '<h1>Olá Flask!</h1>' para o navegador do usuário.
-    # A tag '<h1>' indica um cabeçalho de nível 1 em HTML.
-    return '<h1>Olá Flask!</h1>'
+    # 'render_template('lista.html')' usa a função render_template para procurar
+    # um arquivo chamado 'lista.html' na pasta 'templates' (por padrão) e renderizá-lo.
+    # O conteúdo desse arquivo HTML será retornado como a resposta para o navegador do usuário.
+    return render_template('lista.html')
 
 # app.run(debug=True) inicia o servidor de desenvolvimento do Flask.
 # 'debug=True' habilita o modo de depuração. Isso significa que:
